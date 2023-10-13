@@ -1,9 +1,5 @@
-" generic mappings
-
-let g:mapleader = "\<Space>\<Space>"
-
+" very basic mappings 
 nnoremap <silent> <leader><space> :noh<cr>
-nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <leader>w! :write !sudo tee % >/dev/null<cr><cr>
 nnoremap <silent> <leader>te :set expandtab!<cr>
 
