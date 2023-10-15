@@ -3,7 +3,7 @@
 -- apply old-style settings
 vim.g.mapleader = "  "
 vim.cmd([[
-    runtime settings
+    runtime settings.lua
     runtime! settings.d/**
 ]])
 
