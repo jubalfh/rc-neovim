@@ -35,6 +35,7 @@ return {
     -- tpope fanclub
     'tpope/vim-abolish',
     'tpope/vim-capslock',
+    'tpope/vim-commentary',
     'tpope/vim-endwise',
     'tpope/vim-fugitive',
     'tpope/vim-rsi',
