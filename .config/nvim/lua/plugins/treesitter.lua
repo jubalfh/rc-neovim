@@ -39,9 +39,24 @@ return {
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
     opts = {
-      highlight = { enable = true },
-      indent = { enable = true },
+      highlight = {
+        enable = true,
+        disable = {
+          "bash",
+          "python",
+          "yaml",
+          "yaml.ansible",
+        },
+        additional_vim_regex_highligting = {
+          "bash",
+          "python",
+          "yaml",
+          "yaml.ansible",
+        },
+      },
+      indent = { enable = false },
       ensure_installed = {
+        "awk",
         "bash",
         "c",
         "diff",
