@@ -1,4 +1,26 @@
 return {
+  -- twilight (limelight replacement)
+  'folke/twilight.nvim',
+
+  -- zen mode (goyo replacement)
+  'folke/zen-mode.nvim',
+
+  -- undotree
+  'mbbill/undotree',
+
+  -- golden view
+  'zhaocai/GoldenView.vim',
+
+  -- paren-crosshairs
+  'chreekat/vim-paren-crosshairs',
+
+  -- detectindent
+  { 'ciaranm/detectindent', lazy = false },
+
+  -- components and utilities
+  { 'MunifTanjim/nui.nvim' },
+  { "nvim-lua/plenary.nvim" },
+
   -- `vim.notify()` enhancement
   {
     "rcarriga/nvim-notify",
@@ -25,6 +47,7 @@ return {
     },
     init = function() end,
   },
+
   -- better vim.ui
   {
     "stevearc/dressing.nvim",
@@ -42,6 +65,7 @@ return {
       end
     end,
   },
+
   -- indent guides for Neovim
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -69,6 +93,7 @@ return {
     },
     main = "ibl",
   },
+
   -- Active indent guide and indent text objects. When you're browsing
   -- code, this highlights the current level of indentation, and animates
   -- the highlighting.
@@ -100,6 +125,7 @@ return {
       })
     end,
   },
+
   -- Displays a popup with possible key bindings of the command you started typing
   { "folke/which-key.nvim" },
 }
