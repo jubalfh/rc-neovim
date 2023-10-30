@@ -21,6 +21,17 @@ return {
   { 'MunifTanjim/nui.nvim' },
   { "nvim-lua/plenary.nvim" },
 
+  -- gitsigns.nvim
+  { 'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '+' },
+      },
+      signcolumn = true,
+      attach_to_untracked = true,
+    },
+  },
+
   -- `vim.notify()` enhancement
   {
     "rcarriga/nvim-notify",
