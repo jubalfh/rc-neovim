@@ -14,9 +14,6 @@ return {
   -- terminus
   'wincent/terminus',
 
-  -- signify
-  'mhinz/vim-signify',
-
   -- committia
   'rhysd/committia.vim',
 
