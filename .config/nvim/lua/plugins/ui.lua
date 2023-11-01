@@ -1,31 +1,60 @@
 return {
   -- twilight (limelight replacement)
-  'folke/twilight.nvim',
+  { "folke/twilight.nvim", },
 
   -- zen mode (goyo replacement)
-  'folke/zen-mode.nvim',
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      window = {
+        options = {
+          number = false,
+          cursorcolumn = false,
+          cursorline = false,
+          foldcolumn = "0",
+        },
+      },
+      plugins = {
+        options = {
+          enabled = true,
+        },
+        gitsigns = { enabled = false },
+        twilight = { enabled = true },
+      },
+    },
+  },
+
+  -- trouble
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
 
   -- undotree
-  'mbbill/undotree',
+  "mbbill/undotree",
 
   -- golden view
-  'zhaocai/GoldenView.vim',
+  "zhaocai/GoldenView.vim",
 
   -- paren-crosshairs
-  'chreekat/vim-paren-crosshairs',
+  "chreekat/vim-paren-crosshairs",
 
   -- detectindent
-  { 'ciaranm/detectindent', lazy = false },
-
-  -- components and utilities
-  { 'MunifTanjim/nui.nvim' },
-  { "nvim-lua/plenary.nvim" },
+  { "ciaranm/detectindent", lazy = false },
 
   -- gitsigns.nvim
-  { 'lewis6991/gitsigns.nvim',
+  {
+    "lewis6991/gitsigns.nvim",
     opts = {
       signs = {
-        add = { text = '+' },
+        add = { text = "﹢" },
+        delete = { text = "﹣" },
+        change = { text = "⸽" },
       },
       signcolumn = true,
       attach_to_untracked = true,
@@ -99,6 +128,7 @@ return {
           "notify",
           "toggleterm",
           "lazyterm",
+          "markdown",
         },
       },
     },
@@ -129,6 +159,7 @@ return {
           "notify",
           "toggleterm",
           "lazyterm",
+          "markdown",
         },
         callback = function()
           vim.b.miniindentscope_disable = true
