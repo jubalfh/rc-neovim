@@ -1,14 +1,7 @@
 " some settings for vim-markdown
 
-augroup vim_markdown
-    autocmd!
-    autocmd filetype markdown setlocal nocursorline
-    autocmd filetype markdown setlocal nocursorcolumn
-    autocmd filetype markdown setlocal linebreak
-    autocmd filetype markdown setlocal formatoptions-=t
-    autocmd filetype markdown set lcs=
-    autocmd filetype markdown Goyo 85%+4%x80%
-augroup END
+setlocal linebreak
+setlocal formatoptions-=t
 
 let g:markdown_enable_spell_checking = 0
 let g:vim_markdown_autowrite = 1

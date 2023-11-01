@@ -1,18 +1,18 @@
 return {
-   'hrsh7th/nvim-cmp',
+   "hrsh7th/nvim-cmp",
    event = "VeryLazy",
    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/vim-vsnip',
-      'hrsh7th/cmp-vsnip',
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-vsnip",
    },
    config = function()
-      vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert', 'preview', }
+      vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert", "preview", }
 
-      local cmp = require('cmp')
+      local cmp = require("cmp")
 
       local has_words_before = function()
          local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -22,6 +22,30 @@ return {
       local feedkey = function(key, mode)
          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
       end
+
+      function set_auto_cmp(mode)
+         if mode then
+            cmp.setup({
+               completion = {
+                  autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged }
+               }
+            })
+         else
+            cmp.setup({
+               completion = {
+                  autocomplete = false
+               }
+            })
+         end
+      end
+      set_auto_cmp(false)
+
+      -- enable automatic completion popup on typing
+      vim.cmd("command AutoCmpOn lua set_auto_cmp(true)")
+
+      -- disable automatic competion popup on typing
+      vim.cmd("command AutoCmpOff lua set_auto_cmp(false)")
+
 
       cmp.setup({
          snippet = {
@@ -86,12 +110,12 @@ return {
 
          }),
          sources = cmp.config.sources({
-            { name = 'ale' },
-            { name = 'nvim_lsp' },
-            { name = 'vsnip' },
+            { name = "nvim_lsp" },
+            { name = "ale" },
+            { name = "vsnip" },
          }, {
-            { name = 'path' },
-            { name = 'buffer' },
+            { name = "path" },
+            { name = "buffer" },
          }),
       })
    end
