@@ -41,7 +41,12 @@ return {
   "mbbill/undotree",
 
   -- golden view
-  "zhaocai/GoldenView.vim",
+  {
+    "zhaocai/GoldenView.vim",
+    init = function()
+      vim.g.goldenview__enable_default_mapping = 0
+    end
+  },
 
   -- paren-crosshairs
   "chreekat/vim-paren-crosshairs",

@@ -1,18 +1,4 @@
 return {
-  -- ale
-  {
-    "dense-analysis/ale",
-    event = "BufEnter",
-    init = function()
-      vim.g.ale_use_neovim_diagnostics_api = 1
-      vim.g.ale_sh_bashate_options = "-i E003,E006,E043"
-      vim.g.ale_linters = {
-        sh = { "language_server", "shellcheck", "bashate" }
-      }
-      vim.g.ale_floating_window_border = { "│", "─", "╭", "╮", "╯", "╰", "│", "─" }
-    end
-  },
-
   -- deadcolumn
   { "Bekaboo/deadcolumn.nvim", },
 
