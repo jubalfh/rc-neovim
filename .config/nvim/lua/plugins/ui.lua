@@ -7,7 +7,9 @@ return {
     "folke/zen-mode.nvim",
     opts = {
       window = {
+        width = 80,
         options = {
+          signcolumn = "no",
           number = false,
           cursorcolumn = false,
           cursorline = false,
@@ -85,7 +87,6 @@ return {
         vim.api.nvim_win_set_config(win, { zindex = 100 })
       end,
     },
-    init = function() end,
   },
 
   -- better vim.ui
@@ -145,6 +146,7 @@ return {
     opts = {
       symbol = "│",
       options = { try_as_border = true },
+      draw = { animation = function() return 0 end },
     },
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
@@ -159,7 +161,6 @@ return {
           "notify",
           "toggleterm",
           "lazyterm",
-          "markdown",
         },
         callback = function()
           vim.b.miniindentscope_disable = true
