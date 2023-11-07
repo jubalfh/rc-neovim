@@ -14,3 +14,6 @@ nnoremap <silent> k gk
 if &readonly
     nnoremap <silent> <esc> <esc><esc>:qa!<cr>
 endif
+
+" undotree
+nnoremap <silent> <leader>g :UndotreeToggle<CR>

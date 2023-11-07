@@ -1,25 +1,46 @@
 return {
-  -- file formats
-  { "pearofducks/ansible-vim", lazy = false, },
+    -- file formats
 
-  { "lepture/vim-jinja", lazy = false, },
+    -- ansible
+    {
+        "pearofducks/ansible-vim",
+        lazy = false,
+        dependencies = {
+            "lepture/vim-jinja",
+        },
+    },
 
-  "avakhov/vim-yaml",
+    -- jinja
+    { "lepture/vim-jinja" },
 
-  "elzr/vim-json",
+    -- yaml
+    "avakhov/vim-yaml",
 
-  {
-    "plasticboy/vim-markdown",
-    dependencies = {
-      "folke/zen-mode.nvim"
-    }
-  },
+    -- json
+    {
+        "elzr/vim-json",
+        init = function()
+            vim.g.vim_json_syntax_conceal = 0
+        end,
+    },
 
-  "jubalfh/vim-ldapschema",
+    -- markdown
+    {
+        "plasticboy/vim-markdown",
+        dependencies = {
+            "folke/zen-mode.nvim",
+        },
+    },
 
-  "aklt/plantuml-syntax",
+    -- ldap schema
+    "jubalfh/vim-ldapschema",
 
-  "nfnty/vim-nftables",
+    -- plantuml
+    "aklt/plantuml-syntax",
 
-  "PProvost/vim-ps1",
+    -- nftables
+    "nfnty/vim-nftables",
+
+    -- powershell
+    "PProvost/vim-ps1",
 }
