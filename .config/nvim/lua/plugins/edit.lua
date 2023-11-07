@@ -1,28 +1,61 @@
 return {
-  -- deadcolumn
-  { "Bekaboo/deadcolumn.nvim", },
+    -- treesj (split/join via treesitter)
+    {
+        "Wansmer/treesj",
+        keys = {
+            "<Leader>m",
+            "<Leader>j",
+            "<Leader>s",
+        },
 
-  -- isort
-  "stsewd/isort.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
 
-  -- table mode
-  "dhruvasagar/vim-table-mode",
+        config = function()
+            require("treesj").setup({})
+        end,
+    },
 
-  -- vim-cool
-  "romainl/vim-cool",
+    -- sos (fire-and-forget autosave beyond `autowrite`)
+    {
+        "tmillr/sos.nvim",
+        opts = {
+            timeout = 90 * 1000, -- in ms, so 90s
+            autowrite = true,
+            save_on_cmd = "some",
+            save_on_bufleave = true,
+            save_on_focuslost = false,
+        },
+    },
 
-  -- terminus
-  "wincent/terminus",
+    -- deadcolumn
+    { "Bekaboo/deadcolumn.nvim" },
 
-  -- committia
-  "rhysd/committia.vim",
+    -- undotree
+    {
+        "mbbill/undotree",
+    },
 
-  -- tpope fanclub
-  "tpope/vim-abolish",
-  "tpope/vim-capslock",
-  "tpope/vim-commentary",
-  "tpope/vim-endwise",
-  "tpope/vim-fugitive",
-  "tpope/vim-rsi",
-  "tpope/vim-surround",
+    -- isort
+    "stsewd/isort.nvim",
+
+    -- table mode
+    "dhruvasagar/vim-table-mode",
+
+    -- vim-cool
+    "romainl/vim-cool",
+
+    -- terminus
+    "wincent/terminus",
+
+    -- committia
+    "rhysd/committia.vim",
+
+    -- tpope fanclub
+    "tpope/vim-abolish",
+    "tpope/vim-capslock",
+    "tpope/vim-commentary",
+    "tpope/vim-endwise",
+    "tpope/vim-fugitive",
+    "tpope/vim-rsi",
+    "tpope/vim-surround",
 }

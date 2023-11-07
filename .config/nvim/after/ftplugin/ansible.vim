@@ -1,7 +1,4 @@
-" some settings for yaml files
+" yaml: two-spaces indent, and base folds on it
 
-augroup yaml_ansible_files
-    autocmd!
-    autocmd filetype ansible setlocal sts=2 ts=2
-    autocmd filetype ansible setlocal foldmethod=indent
-augroup END
+setlocal sts=2 ts=2
+setlocal foldmethod=indent

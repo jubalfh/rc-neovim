@@ -59,4 +59,4 @@ vim.opt.backup = true
 vim.opt.undolevels = 1200
 vim.opt.undofile = true
 
-vim.cmd([[highlight SpecialKey ctermfg=11 ctermbg=8]])
+-- vim.cmd([[highlight SpecialKey ctermfg=11 ctermbg=8]])
