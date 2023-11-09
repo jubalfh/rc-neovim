@@ -26,6 +26,15 @@ return {
         },
     },
 
+    -- telescope cluster
+    {
+        'nvim-telescope/telescope.nvim',
+    },
+
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+    },
+
     -- trouble
     {
         "folke/trouble.nvim",
