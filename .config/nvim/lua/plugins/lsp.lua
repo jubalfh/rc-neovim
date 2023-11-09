@@ -7,7 +7,10 @@ return {
             vim.g.ale_use_neovim_diagnostics_api = 1
             vim.g.ale_sh_bashate_options = "-i E003,E006,E043"
             vim.g.ale_linters = {
+                -- note that ale is disabled for both shell and python
+                -- via .../settings.d/autocommands.vim
                 sh = { "language_server", "shellcheck" },
+                python = { "ruff", "flake8" }
             }
             vim.g.ale_floating_window_border = { "│", "─", "╭", "╮", "╯", "╰", "│", "─" }
         end,
@@ -54,10 +57,20 @@ return {
                 ansiblels = {},
                 awk_ls = {},
                 bashls = {},
-                jedi_language_server = {},
                 lua_ls = {
                     settings = { Lua = { diagnostics = { globals = { "vim" } } } },
                 },
+                pylsp = {
+                    settings = {
+                        pylsp = {
+                            plugins = {
+                                pycodestyle = { enabled = false },
+                                pylint = { enabled = false },
+                            },
+                        },
+                    },
+                },
+                ruff_lsp = {},
                 yamlls = {},
             }
             require("mason").setup()

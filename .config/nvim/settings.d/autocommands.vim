@@ -16,7 +16,7 @@ augroup END
 " disable ALE for specific filetypes
 augroup ale_disabled
     autocmd!
-    autocmd FileType sh let b:ale_enabled = 0
+    autocmd FileType sh,python let b:ale_enabled = 0
 augroup END
 
 " detect indent on buffer read
