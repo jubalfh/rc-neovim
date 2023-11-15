@@ -56,34 +56,30 @@ return {
                 sections = {
                     lualine_a = {
                         {
-                            "buffers",
+                            "filetype",
+                            icon_only = true,
+                            icons_enabled = true,
+                            colored = false,
+                            icon = { "x", align = "center" },
+                        },
+                        {
+                            "filename",
+                            path = 3,
+                            newfile_status = true,
+                            shorting_target = 35,
                             filetype_names = {
                                 undotree = "UNDO",
                             },
                             symbols = {
                                 readonly = " ",
+                                unnamed = "scratch",
                             },
                         },
                     },
                     lualine_b = { "diagnostics" },
-                    lualine_c = {
-                        "diff",
-                        {
-                            "filename",
-                            file_status = false,
-                            newfile_status = true,
-                            path = 3,
-                            shorting_target = 35,
-                        },
-                    },
+                    lualine_c = { "diff", },
                     lualine_x = {
                         "branch",
-                        -- {
-                        --     "filetype",
-                        --     icons_enabled = true,
-                        --     colored = false,
-                        --     icon = { "x", align = "center" },
-                        -- },
                         -- "encoding",
                     },
                     lualine_y = { "progress" },
