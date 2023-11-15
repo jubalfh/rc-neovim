@@ -4,7 +4,7 @@ local airline_file_loc = function()
     local line = vim.fn.line(".")
     local lines = vim.fn.line("$")
     local col = vim.fn.virtcol(".")
-    return string.format(":%d/%d☰ ℅:%-2d", line, lines, col)
+    return string.format(":%d/%d☰ ℅:%d", line, lines, col)
 end
 
 return {
@@ -38,11 +38,15 @@ return {
                             "alpha",
                             "starter",
                         },
-                        winbar = {},
+                        winbar = {
+                            "dashboard",
+                            "alpha",
+                            "starter",
+                        },
                     },
                     ignore_focus = {},
                     always_divide_middle = true,
-                    globalstatus = false,
+                    globalstatus = true,
                     refresh = {
                         statusline = 1000,
                         tabline = 1000,
@@ -50,37 +54,40 @@ return {
                     },
                 },
                 sections = {
-                    lualine_a = { "mode" },
-                    lualine_b = { "branch", "diagnostics" },
+                    lualine_a = {
+                        {
+                            "buffers",
+                            filetype_names = {
+                                undotree = "UNDO",
+                            },
+                            symbols = {
+                                readonly = " ",
+                            },
+                        },
+                    },
+                    lualine_b = { "diagnostics" },
                     lualine_c = {
                         "diff",
                         {
                             "filename",
-                            symbols = {
-                                modified = "⚡",
-                                readonly = "",
-                            },
+                            file_status = false,
+                            newfile_status = true,
+                            path = 3,
+                            shorting_target = 35,
                         },
                     },
                     lualine_x = {
-                        "encoding",
-                        {
-                            "fileformat",
-                            symbols = {
-                                unix = "cr",
-                                dos = "crlf",
-                                mac = "lf",
-                            },
-                        },
-                        {
-                            "filetype",
-                            icons_enabled = true,
-                            colored = false,
-                            icon = { "x", align = "center" },
-                        },
+                        "branch",
+                        -- {
+                        --     "filetype",
+                        --     icons_enabled = true,
+                        --     colored = false,
+                        --     icon = { "x", align = "center" },
+                        -- },
+                        -- "encoding",
                     },
                     lualine_y = { "progress" },
-                    lualine_z = { airline_file_loc },
+                    lualine_z = { airline_file_loc, "mode" },
                 },
                 inactive_sections = {
                     lualine_a = {},
