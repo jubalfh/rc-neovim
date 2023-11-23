@@ -56,7 +56,7 @@ return {
             local language_servers = {
                 ansiblels = {},
                 awk_ls = {},
-                ast_grep = {},
+                -- ast_grep = {},
                 bashls = {},
                 lua_ls = {
                     settings = {
