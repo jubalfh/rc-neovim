@@ -59,7 +59,16 @@ return {
                 ast_grep = {},
                 bashls = {},
                 lua_ls = {
-                    settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+                    settings = {
+                        Lua = {
+                            runtime = { version = "LuaJIT", },
+                            diagnostics = {
+                                enable = true,
+                                globals = { "vim", "use", },
+                            },
+                            telemetry = { enable = false },
+                        },
+                    },
                 },
                 pylsp = {
                     settings = {

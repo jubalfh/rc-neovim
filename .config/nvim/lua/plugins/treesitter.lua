@@ -16,7 +16,7 @@ return {
                         if name:find("goto") == 1 then
                             move[name] = function(q, ...)
                                 if vim.wo.diff then
-                                    local config = configs.get_module("textobjects.move")[name] ---@type table<string,string>
+                                    local config = configs.get_module("textobjects.move")[name]
                                     for key, query in pairs(config or {}) do
                                         if q == query and key:find("[%]%[][cC]") then
                                             vim.cmd("normal! " .. key)
@@ -36,8 +36,6 @@ return {
             { "<c-space>", desc = "Increment selection" },
             { "<bs>", desc = "Decrement selection", mode = "x" },
         },
-        ---@type TSConfig
-        ---@diagnostic disable-next-line: missing-fields
         opts = {
             highlight = {
                 enable = true,
@@ -99,10 +97,8 @@ return {
                 },
             },
         },
-        ---@param opts TSConfig
         config = function(_, opts)
             if type(opts.ensure_installed) == "table" then
-                ---@type table<string, boolean>
                 local added = {}
                 opts.ensure_installed = vim.tbl_filter(function(lang)
                     if added[lang] then
