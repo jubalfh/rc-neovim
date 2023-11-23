@@ -23,7 +23,7 @@ return {
             vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
         end
 
-        function set_auto_cmp(mode)
+        function set_auto_cmp(mode) -- luacheck:ignore 111
             if mode then
                 cmp.setup({
                     completion = {
@@ -38,7 +38,7 @@ return {
                 })
             end
         end
-        set_auto_cmp(false)
+        set_auto_cmp(false) -- luacheck:ignore 113
 
         -- enable automatic completion popup on typing
         vim.cmd("command AutoCmpOn lua set_auto_cmp(true)")
