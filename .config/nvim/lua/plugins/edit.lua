@@ -50,6 +50,9 @@ return {
     -- committia
     "rhysd/committia.vim",
 
+    -- vim-lastplace
+    "farmergreg/vim-lastplace",
+
     -- tpope fanclub
     "tpope/vim-abolish",
     "tpope/vim-capslock",
