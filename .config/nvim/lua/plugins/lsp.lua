@@ -54,7 +54,15 @@ return {
         },
         config = function()
             local language_servers = {
-                ansiblels = {},
+                ansiblels = {
+                    settings = {
+                        ansible = {
+                            validation = {
+                                lint = { enabled = true },
+                            },
+                        },
+                    },
+                },
                 awk_ls = {},
                 -- ast_grep = {},
                 bashls = {},
