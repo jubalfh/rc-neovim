@@ -1,8 +1,13 @@
+--
+-- language servers, linters, debuggers, oh my!
+--
+
 return {
     -- ale
     {
         "dense-analysis/ale",
         event = "BufEnter",
+
         init = function()
             vim.g.ale_use_neovim_diagnostics_api = 1
             vim.g.ale_sh_bashate_options = "-i E003,E006,E043"
@@ -10,7 +15,7 @@ return {
                 -- note that ale is disabled for both shell and python
                 -- via .../settings.d/autocommands.vim
                 sh = { "language_server", "shellcheck" },
-                python = { "ruff", "flake8" }
+                python = { "ruff", "flake8" },
             }
             vim.g.ale_floating_window_border = { "│", "─", "╭", "╮", "╯", "╰", "│", "─" }
         end,
@@ -24,6 +29,7 @@ return {
     -- lsp-timeout
     {
         "hinell/lsp-timeout.nvim",
+
         dependencies = {
             "neovim/nvim-lspconfig",
         },
@@ -38,6 +44,7 @@ return {
     -- mason
     {
         "williamboman/mason.nvim",
+
         dependencies = {
             "neovim/nvim-lspconfig",
             "mfussenegger/nvim-lint",
@@ -49,9 +56,11 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         lazy = false,
+
         dependencies = {
             "williamboman/mason.nvim",
         },
+
         config = function()
             local language_servers = {
                 ansiblels = {
@@ -69,10 +78,10 @@ return {
                 lua_ls = {
                     settings = {
                         Lua = {
-                            runtime = { version = "LuaJIT", },
+                            runtime = { version = "LuaJIT" },
                             diagnostics = {
                                 enable = true,
-                                globals = { "vim", "use", },
+                                globals = { "vim", "use" },
                             },
                             telemetry = { enable = false },
                         },

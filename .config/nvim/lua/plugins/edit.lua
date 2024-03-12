@@ -1,3 +1,7 @@
+--
+-- general editing enhancements
+--
+
 return {
     -- treesj (split/join via treesitter)
     {
@@ -18,6 +22,7 @@ return {
     -- sos (fire-and-forget autosave beyond `autowrite`)
     {
         "tmillr/sos.nvim",
+
         opts = {
             timeout = 90 * 1000, -- in ms, so 90s
             autowrite = true,
@@ -27,16 +32,67 @@ return {
         },
     },
 
-    -- deadcolumn
-    { "Bekaboo/deadcolumn.nvim" },
-
-    -- undotree
+    -- rainbow parentheses
     {
-        "mbbill/undotree",
+        "HiPhish/rainbow-delimiters.nvim",
+
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
 
-    -- isort
-    "stsewd/isort.nvim",
+    -- automatic pairs
+    {
+        "echasnovski/mini.pairs",
+
+        opts = {
+            mappings = {
+                -- polish quote marks
+                ["„"] = {
+                    action = "closeopen",
+                    pair = "„”",
+                    neigh_pattern = "[^\\].",
+                    register = { cr = false },
+                },
+
+                -- english quote marks
+                ["“"] = {
+                    action = "closeopen",
+                    pair = "“”",
+                    neigh_pattern = "[^\\].",
+                    register = { cr = false },
+                },
+            },
+        },
+
+        config = true,
+    },
+
+    -- block/line moves
+    {
+        "echasnovski/mini.move",
+
+        opts = {
+            mappings = {
+                left = "<S-left>",
+                right = "<S-right>",
+                up = "<S-up>",
+                down = "<S-down>",
+            },
+        },
+
+        config = true,
+    },
+
+    -- diff view
+    "sindrets/diffview.nvim",
+
+    -- grapple
+    "cbochs/grapple.nvim",
+
+    -- deadcolumn
+    "Bekaboo/deadcolumn.nvim",
+
+    -- undotree
+    "mbbill/undotree",
 
     -- table mode
     "dhruvasagar/vim-table-mode",

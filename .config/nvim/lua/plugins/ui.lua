@@ -1,10 +1,15 @@
+--
+-- general ui configuration
+--
+
 return {
     -- twilight (limelight replacement)
-    { "folke/twilight.nvim" },
+    "folke/twilight.nvim",
 
     -- zen mode (goyo replacement)
     {
         "folke/zen-mode.nvim",
+
         opts = {
             window = {
                 width = 80,
@@ -27,18 +32,17 @@ return {
     },
 
     -- telescope cluster
-    {
-        'nvim-telescope/telescope.nvim',
-    },
-
-    {
-        'nvim-telescope/telescope-fzf-native.nvim',
-    },
+    "nvim-telescope/telescope.nvim",
+    "nvim-telescope/telescope-fzf-native.nvim",
 
     -- trouble
     {
         "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
+
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+
         opts = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
@@ -49,13 +53,11 @@ return {
     -- golden view
     {
         "zhaocai/GoldenView.vim",
+
         init = function()
             vim.g.goldenview__enable_default_mapping = 0
         end,
     },
-
-    -- paren-crosshairs
-    "chreekat/vim-paren-crosshairs",
 
     -- detectindent
     { "ciaranm/detectindent", lazy = false },
@@ -63,6 +65,7 @@ return {
     -- gitsigns.nvim
     {
         "lewis6991/gitsigns.nvim",
+
         opts = {
             signs = {
                 add = { text = "﹢" },
@@ -77,6 +80,7 @@ return {
     -- `vim.notify()` enhancement
     {
         "rcarriga/nvim-notify",
+
         keys = {
             {
                 "<leader>un",
@@ -86,6 +90,7 @@ return {
                 desc = "Dismiss all Notifications",
             },
         },
+
         opts = {
             timeout = 3000,
             max_height = function()
@@ -104,6 +109,7 @@ return {
     {
         "stevearc/dressing.nvim",
         lazy = true,
+
         init = function()
             ---@diagnostic disable-next-line: duplicate-set-field
             vim.ui.select = function(...)
@@ -118,10 +124,11 @@ return {
         end,
     },
 
-    -- indent guides for Neovim
+    -- indent guides for neovim
     {
         "lukas-reineke/indent-blankline.nvim",
         -- event = "VeryLazy",
+
         opts = {
             indent = {
                 char = "│",
@@ -144,15 +151,15 @@ return {
                 },
             },
         },
+
         main = "ibl",
     },
 
-    -- Active indent guide and indent text objects. When you're browsing
-    -- code, this highlights the current level of indentation, and animates
-    -- the highlighting.
+    -- active indent guide and indent text objects. (highlights
+    -- the current level of indentation, and animates the highlighting)
     {
         "echasnovski/mini.indentscope",
-        version = false, -- wait till new 0.7.0 release to put it back on semver
+        version = false,
         event = "VeryLazy",
         opts = {
             symbol = "│",
@@ -163,6 +170,7 @@ return {
                 end,
             },
         },
+
         init = function()
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = {
@@ -197,6 +205,6 @@ return {
         end,
     },
 
-    -- Displays a popup with possible key bindings of the command you started typing
-    { "folke/which-key.nvim" },
+    -- displays a popup with possible key bindings of the command you started typing
+    "folke/which-key.nvim",
 }

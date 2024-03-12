@@ -1,3 +1,7 @@
+--
+-- some light theming
+--
+
 -- override for the lualine's location function
 -- (modeled on the standard airline behaviour)
 local airline_file_loc = function()
@@ -25,6 +29,7 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
+
         config = function()
             require("lualine").setup({
                 options = {
@@ -77,7 +82,7 @@ return {
                         },
                     },
                     lualine_b = { "diagnostics" },
-                    lualine_c = { "diff", },
+                    lualine_c = { "diff" },
                     lualine_x = {
                         "branch",
                         -- "encoding",
@@ -106,6 +111,7 @@ return {
         "sainnhe/gruvbox-material",
         lazy = false,
         priority = 1000,
+
         config = function()
             vim.cmd([[colorscheme gruvbox-material]])
         end,
