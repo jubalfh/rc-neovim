@@ -9,12 +9,12 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 
-vim.opt.backspace = { 'indent', 'eol', 'start' }
+vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.copyindent = true
 vim.opt.confirm = false
-vim.opt.cpoptions:remove { 'a', 'A' }
-vim.opt.cpoptions:append { c=true, e=true, F=true, n=true }
-vim.opt.shortmess:append { I=true }
+vim.opt.cpoptions:remove({ "a", "A" })
+vim.opt.cpoptions:append({ c = true, e = true, F = true, n = true })
+vim.opt.shortmess:append({ I = true })
 vim.opt.digraph = false
 vim.opt.errorbells = false
 vim.opt.magic = true
@@ -24,7 +24,7 @@ vim.opt.ignorecase = true
 vim.opt.infercase = true
 vim.opt.smartcase = true
 
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 vim.opt.mousefocus = true
 vim.opt.mousehide = true
 
@@ -37,7 +37,7 @@ vim.opt.shiftwidth = 4
 vim.opt.textwidth = 71
 vim.opt.wrap = true
 vim.opt.foldenable = false
-vim.opt.formatoptions = 'qrnlj1tc'
+vim.opt.formatoptions = "qrnlj1tc"
 vim.opt.colorcolumn = { 85 }
 vim.opt.fixendofline = false
 
@@ -46,15 +46,15 @@ vim.opt.showmatch = true
 vim.opt.showmode = true
 vim.opt.wrapscan = true
 
-vim.opt.wildignore = { '*~', '*.swp', '*.bak', '*.pyc', '*.class' }
+vim.opt.wildignore = { "*~", "*.swp", "*.bak", "*.pyc", "*.class" }
 vim.opt.title = true
 vim.opt.visualbell = true
 
 vim.opt.list = true
-vim.opt.listchars = { tab='▸ ', eol = '┐' }
+-- vim.opt.listchars = { tab='▸ ', eol = '┐' }
 
 -- backups and undo
-vim.opt.backupdir = vim.fn.stdpath('state') .. '/backup//'
+vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup//"
 vim.opt.backup = true
 vim.opt.undolevels = 1200
 vim.opt.undofile = true

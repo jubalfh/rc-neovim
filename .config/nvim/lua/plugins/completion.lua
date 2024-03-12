@@ -1,6 +1,12 @@
+--
+-- completion configuration
+--
+
 return {
     "hrsh7th/nvim-cmp",
+
     event = "VeryLazy",
+
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
@@ -8,7 +14,9 @@ return {
         "hrsh7th/cmp-cmdline",
         "hrsh7th/vim-vsnip",
         "hrsh7th/cmp-vsnip",
+        "SergioRibera/cmp-dotenv",
     },
+
     config = function()
         vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert", "preview" }
 
@@ -52,10 +60,12 @@ return {
                     vim.fn["vsnip#anonymous"](args.body)
                 end,
             },
+
             window = {
                 -- completion = cmp.config.window.bordered(),
                 -- documentation = cmp.config.window.bordered(),
             },
+
             mapping = cmp.mapping.preset.insert({
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
@@ -109,11 +119,13 @@ return {
                     fallback()
                 end,
             }),
+
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "ale" },
                 { name = "vsnip" },
             }, {
+                { name = "env" },
                 { name = "path" },
                 { name = "buffer" },
             }),

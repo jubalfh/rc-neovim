@@ -1,12 +1,18 @@
+--
+-- treesitter-specific
+--
+
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        version = false, -- last release is way too old and doesn't work on Windows
+        version = false,
         build = ":TSUpdate",
         event = { "VeryLazy" },
+
         dependencies = {
             {
                 "nvim-treesitter/nvim-treesitter-textobjects",
+
                 config = function()
                     -- When in diff mode, we want to use the default
                     -- vim text objects c & C instead of the treesitter ones.
@@ -31,11 +37,14 @@ return {
                 end,
             },
         },
+
         cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+
         keys = {
             { "<c-space>", desc = "Increment selection" },
             { "<bs>", desc = "Decrement selection", mode = "x" },
         },
+
         opts = {
             highlight = {
                 enable = true,
@@ -97,13 +106,12 @@ return {
                 },
             },
         },
+
         config = function(_, opts)
             if type(opts.ensure_installed) == "table" then
                 local added = {}
                 opts.ensure_installed = vim.tbl_filter(function(lang)
-                    if added[lang] then
-                        return false
-                    end
+                    if added[lang] then return false end
                     added[lang] = true
                     return true
                 end, opts.ensure_installed)
@@ -112,18 +120,11 @@ return {
         end,
     },
 
-    -- Show context of the current function
+    -- show context of the current function
     {
         "nvim-treesitter/nvim-treesitter-context",
-        event = "VeryLazy",
         enabled = true,
+        event = "VeryLazy",
         opts = { mode = "cursor" },
-    },
-
-    -- Automatically add closing tags for HTML and JSX
-    {
-        "windwp/nvim-ts-autotag",
-        event = "InsertEnter",
-        opts = {},
     },
 }

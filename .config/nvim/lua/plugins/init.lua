@@ -1,8 +1,15 @@
+--
+-- common components and utilities
+--
+
 return {
-    -- common components and utilities
-    { "MunifTanjim/nui.nvim" },
 
-    { "nvim-lua/plenary.nvim" },
+    -- nui
+    "MunifTanjim/nui.nvim",
 
-    { "nvim-tree/nvim-web-devicons" },
+    -- plenary
+    "nvim-lua/plenary.nvim",
+
+    -- devicons
+    "nvim-tree/nvim-web-devicons",
 }
