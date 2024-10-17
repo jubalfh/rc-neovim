@@ -205,6 +205,24 @@ return {
         end,
     },
 
+    -- display a file map
+    {
+        "echasnovski/mini.map",
+
+        config = true,
+    },
+
+    {
+        "nvimdev/lspsaga.nvim",
+        event = "LSPAttach",
+
+        config = {
+            lightbulb = {
+                enable = false
+            },
+        },
+    },
+
     -- displays a popup with possible key bindings of the command you started typing
     "folke/which-key.nvim",
 }

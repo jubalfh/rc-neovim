@@ -82,6 +82,9 @@ return {
         config = true,
     },
 
+    -- large file support
+    "pteroctopus/faster.nvim",
+
     -- diff view
     "sindrets/diffview.nvim",
 
