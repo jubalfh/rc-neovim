@@ -97,7 +97,7 @@ return {
                         },
                     },
                 },
-                ruff_lsp = {},
+                ruff = {},
                 yamlls = {},
             }
             require("mason").setup()

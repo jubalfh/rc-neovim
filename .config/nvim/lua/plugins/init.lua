@@ -3,6 +3,8 @@
 --
 
 return {
+    -- color highlighting
+    "brenoprata10/nvim-highlight-colors",
 
     -- nui
     "MunifTanjim/nui.nvim",
