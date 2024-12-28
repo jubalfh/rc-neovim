@@ -216,7 +216,7 @@ return {
         "nvimdev/lspsaga.nvim",
         event = "LSPAttach",
 
-        config = {
+        opts = {
             lightbulb = {
                 enable = false
             },

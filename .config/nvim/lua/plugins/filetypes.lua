@@ -60,11 +60,14 @@ return {
     },
 
     {
-        "lukas-reineke/headlines.nvim",
+        "MeanderingProgrammer/render-markdown.nvim",
+
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
         },
-        config = true,
+
+        opts = {},
     },
 
     -- ldap schema

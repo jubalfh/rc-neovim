@@ -2,10 +2,6 @@
 
 -- apply old-style settings
 vim.g.mapleader = "  "
-vim.cmd([[
-    runtime settings.lua
-    runtime! settings.d/**
-]])
 
 -- bootstrap lazy (lazy bootstrap)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -24,3 +20,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- plugins
 require("lazy").setup("plugins")
+
+vim.cmd([[
+    runtime settings.lua
+    runtime! settings.d/**
+]])
