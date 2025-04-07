@@ -98,7 +98,23 @@ return {
                     },
                 },
                 ruff = {},
-                yamlls = {},
+                yamlls = {
+                    settings = {
+                        redhat = { telemetry = { enabled = false } },
+                        yaml = {
+                            validate = true,
+                            format = { enable = true },
+                            hover = true,
+                            schemaStore = {
+                                enable = true,
+                                url = "https://www.schemastore.org/api/json/catalog.json",
+                            },
+                            schemaDownload = { enable = true },
+                            schemas = {},
+                            trace = { server = "debug" },
+                        }
+                    }
+                },
             }
             require("mason").setup()
             require("mason-lspconfig").setup({

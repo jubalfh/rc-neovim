@@ -10,6 +10,20 @@ return {
     -- yaml
     "avakhov/vim-yaml",
 
+    {
+        "someone-stole-my-name/yaml-companion.nvim",
+
+        config = function()
+            require("telescope").load_extension("yaml_schema")
+        end,
+
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    },
+
     -- ansible
     {
         "pearofducks/ansible-vim",
@@ -48,6 +62,27 @@ return {
         init = function()
             vim.g.vim_json_syntax_conceal = 0
         end,
+    },
+
+    {
+        "gennaro-tedesco/nvim-jqx",
+
+        event = { "BufReadPost" },
+
+        ft = { "json", "yaml" },
+    },
+
+    -- csv
+    {
+        "VidocqH/data-viewer.nvim",
+
+        opts = {},
+
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "kkharji/sqlite.lua",
+        }
+
     },
 
     -- markdown

@@ -66,6 +66,30 @@ return {
         config = true,
     },
 
+    -- tabout
+    {
+        'abecodes/tabout.nvim',
+        lazy = false,
+        priority = 1000,
+
+        event = 'InsertCharPre',
+
+        config = function()
+            require('tabout').setup {
+                act_as_tab = true,
+                act_as_shift_tab = false,
+                tabouts = {
+                    { open = "'", close = "'" },
+                    { open = '"', close = '"' },
+                    { open = '`', close = '`' },
+                    { open = '(', close = ')' },
+                    { open = '[', close = ']' },
+                    { open = '{', close = '}' }
+                },
+            }
+        end
+    },
+
     -- block/line moves
     {
         "echasnovski/mini.move",

@@ -116,4 +116,17 @@ return {
             vim.cmd([[colorscheme gruvbox-material]])
         end,
     },
+
+    -- material
+    {
+        "marko-cerovac/material.nvim"
+    },
+
+    -- catpuccin
+    {
+        "catppuccin/nvim",
+        name = "catpuccin",
+        priority = 1000
+    },
+
 }
