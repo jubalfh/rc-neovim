@@ -121,6 +121,7 @@ return {
                 ensure_installed = vim.tbl_keys(language_servers),
             })
             for server, config in pairs(language_servers) do
+                config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
                 require("lspconfig")[server].setup(config or {})
             end
         end,
