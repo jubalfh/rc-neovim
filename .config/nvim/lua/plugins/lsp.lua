@@ -2,6 +2,69 @@
 -- language servers, linters, debuggers, oh my!
 --
 
+local language_servers = {
+    awk_ls = {},
+    -- ast_grep = {},
+    ansiblels = {
+        settings = {
+            ansible = {
+                validation = {
+                    lint = { enabled = true },
+                },
+            },
+        },
+    },
+    bashls = {},
+    lua_ls = {
+        filetypes = { "lua" },
+        root_files = {
+            ".luarc.json",
+            ".luacheckrc",
+            ".stylua.toml",
+            "stylua.toml",
+            "selene.toml",
+            "init.lua",
+        },
+        settings = {
+            Lua = {
+                runtime = { version = "LuaJIT" },
+                diagnostics = {
+                    globals = { "vim", "use" },
+                },
+                telemetry = { enable = false },
+            },
+        },
+    },
+    pylsp = {
+        settings = {
+            pylsp = {
+                plugins = {
+                    pycodestyle = { enabled = false },
+                    pylint = { enabled = false },
+                },
+            },
+        },
+    },
+    ruff = {},
+    yamlls = {
+        settings = {
+            redhat = { telemetry = { enabled = false } },
+            yaml = {
+                validate = true,
+                format = { enable = true },
+                hover = true,
+                schemaStore = {
+                    enable = true,
+                    url = "https://www.schemastore.org/api/json/catalog.json",
+                },
+                schemaDownload = { enable = true },
+                schemas = {},
+                trace = { server = "debug" },
+            },
+        },
+    },
+}
+
 return {
     -- ale
     {
@@ -10,20 +73,30 @@ return {
 
         init = function()
             vim.g.ale_use_neovim_diagnostics_api = 1
+            vim.g.ale_disable_lsp = 1
             vim.g.ale_sh_bashate_options = "-i E003,E006,E043"
-            vim.g.ale_linters = {
-                -- note that ale is disabled for both shell and python
-                -- via .../settings.d/autocommands.vim
-                sh = { "language_server", "shellcheck" },
-                python = { "ruff", "flake8" },
-            }
             vim.g.ale_floating_window_border = { "│", "─", "╭", "╮", "╯", "╰", "│", "─" }
+            vim.g.ale_fixers = {
+                "remove_trailing_lines",
+                "trim_whitespace",
+            }
         end,
     },
 
     -- lspconfig
     {
         "neovim/nvim-lspconfig",
+        lazy = true,
+        config = function()
+            local capabilities = require("blink.cmp").get_lsp_capabilities()
+            vim.lsp.config("*", {
+                capabilities = capabilities,
+                root_markers = { ".git", ".hg" },
+            })
+            for server, config in pairs(language_servers) do
+                vim.lsp.config(server, config or {})
+            end
+        end,
     },
 
     -- lsp-timeout
@@ -43,7 +116,10 @@ return {
 
     -- mason
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
+        event = "VeryLazy",
+
+        opts = {},
 
         dependencies = {
             "neovim/nvim-lspconfig",
@@ -54,76 +130,19 @@ return {
 
     -- mason-lspconfig
     {
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason-lspconfig.nvim",
         lazy = false,
 
         dependencies = {
-            "williamboman/mason.nvim",
+            "mason-org/mason.nvim",
         },
 
         config = function()
-            local language_servers = {
-                ansiblels = {
-                    settings = {
-                        ansible = {
-                            validation = {
-                                lint = { enabled = true },
-                            },
-                        },
-                    },
-                },
-                awk_ls = {},
-                -- ast_grep = {},
-                bashls = {},
-                lua_ls = {
-                    settings = {
-                        Lua = {
-                            runtime = { version = "LuaJIT" },
-                            diagnostics = {
-                                enable = true,
-                                globals = { "vim", "use" },
-                            },
-                            telemetry = { enable = false },
-                        },
-                    },
-                },
-                pylsp = {
-                    settings = {
-                        pylsp = {
-                            plugins = {
-                                pycodestyle = { enabled = false },
-                                pylint = { enabled = false },
-                            },
-                        },
-                    },
-                },
-                ruff = {},
-                yamlls = {
-                    settings = {
-                        redhat = { telemetry = { enabled = false } },
-                        yaml = {
-                            validate = true,
-                            format = { enable = true },
-                            hover = true,
-                            schemaStore = {
-                                enable = true,
-                                url = "https://www.schemastore.org/api/json/catalog.json",
-                            },
-                            schemaDownload = { enable = true },
-                            schemas = {},
-                            trace = { server = "debug" },
-                        }
-                    }
-                },
-            }
-            require("mason").setup()
+            require("lspconfig")
             require("mason-lspconfig").setup({
                 ensure_installed = vim.tbl_keys(language_servers),
+                automatic_enable = true,
             })
-            for server, config in pairs(language_servers) do
-                config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-                require("lspconfig")[server].setup(config or {})
-            end
         end,
     },
 }
